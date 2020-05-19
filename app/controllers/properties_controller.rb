@@ -10,6 +10,7 @@ class PropertiesController < ApplicationController
 
   def new
     @property = Property.new
+    @property.near_stations.build
   end
 
   def edit
@@ -20,7 +21,7 @@ class PropertiesController < ApplicationController
 
     respond_to do |format|
       if @property.save
-        format.html { redirect_to @property, notice: 'Property was successfully created.' }
+        format.html { redirect_to :root, notice: 'Property was successfully created.' }
         format.json { render :show, status: :created, location: @property }
       else
         format.html { render :new }
@@ -55,6 +56,15 @@ class PropertiesController < ApplicationController
     end
 
     def property_params
-      params.require(:property).permit(:name, :rent, :address, :age, :note)
+      params.require(:property).permit(:name,
+                                       :rent,
+                                       :address,
+                                       :age,
+                                       :note,
+                                       near_stations_attributes: [:route_name,
+                                                                  :station_name,
+                                                                  :minute_walk,
+                                                                  :property_id]
+      )
     end
 end
