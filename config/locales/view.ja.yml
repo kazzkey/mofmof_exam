@@ -1,0 +1,7 @@
+ja:
+  view:
+    back: 戻る
+    new: 物件を登録する
+    show: 詳細
+    edit: 編集
+    destroy: 削除
