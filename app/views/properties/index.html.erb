@@ -21,9 +21,9 @@
         <td><%= property.address %></td>
         <td><%= property.age %>年</td>
         <td><%= property.note %></td>
-        <td><%= link_to 'Show', property %></td>
-        <td><%= link_to 'Edit', edit_property_path(property) %></td>
-        <td><%= link_to 'Destroy', property, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to t('view.show'), property %></td>
+        <td><%= link_to t('view.edit'), edit_property_path(property) %></td>
+        <td><%= link_to t('view.destroy'), property, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -31,4 +31,4 @@
 
 <br>
 
-<%= link_to 'New Property', new_property_path %>
+<%= link_to t('view.new'), new_property_path %>
