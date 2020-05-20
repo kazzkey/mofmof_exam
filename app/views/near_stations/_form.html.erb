@@ -1,28 +1,18 @@
 <%= form_with(model: near_station, local: true) do |form| %>
-  <% if near_station.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(near_station.errors.count, "error") %> prohibited this near_station from being saved:</h2>
+  <%= form.fields_for :near_stations do |station| %>
+    <div class="field">
+      <%= station.label :route_name %>
+      <%= station.text_field :route_name %>
+    </div>
 
-      <ul>
-      <% near_station.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+    <div class="field">
+      <%= station.label :station_name %>
+      <%= station.text_field :station_name %>
+    </div>
+
+    <div class="field">
+      <%= station.label :minute_walk %>
+      <%= station.text_field :minute_walk %>分
     </div>
   <% end %>
-
-  <div class="field">
-    <%= form.label :route_name %>
-    <%= form.text_field :route_name %>
-  </div>
-
-  <div class="field">
-    <%= form.label :station_name %>
-    <%= form.text_field :station_name %>
-  </div>
-
-  <div class="field">
-    <%= form.label :minute_walk %>
-    <%= form.number_field :minute_walk %>分
-  </div>
 <% end %>
